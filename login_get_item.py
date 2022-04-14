@@ -1,5 +1,3 @@
-import json
-from socketserver import BaseRequestHandler
 import requests
 
 
