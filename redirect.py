@@ -1,7 +1,12 @@
 import requests
-
+import logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(levelname)s: %(message)s")
 base_url = "http://github.com"
 
-r = requests.get(base_url, allow_redirects=True)
-print(r.raise_for_status)
-print(r.history)
+def redirect_request():
+    r = requests.get(base_url, allow_redirects=True)
+    logging.info(r.history)
+
+
+if __name__ == "__main__":
+    redirect_request()
