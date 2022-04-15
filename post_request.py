@@ -9,7 +9,7 @@ payload = {"firstName": "john", "lastName": "Doe"}
 
 def post_request():
     r = requests.post(base_url, data=payload)
-    logging.info(r.content)
+    logging.info(r.json())
 
 
 
