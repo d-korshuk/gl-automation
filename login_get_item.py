@@ -21,7 +21,7 @@ def login():
 #Getting an item
 def get_item():
     r = requests.get(get_item_url, headers={"Autorization": token})
-    logging.info(r.text)
+    logging.info(r.json())
 
 
 if __name__ == "__main__":
