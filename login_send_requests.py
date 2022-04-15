@@ -3,6 +3,7 @@ import logging
 logging.basicConfig(filename="log.txt", level=logging.INFO, format="%(asctime)s: %(levelname)s: %(message)s")
 
 
+
 login_url = "https://app.cosmosid.com/api/v1/login"
 login_payload = {"expiry": 86400, "login_from": "login page"}
 login_headers = {"Authorization": "Basic bWFpbGludGVzdEB1a3IubmV0Om1haWxpbnRlc3RAdWtyLm5ldA=="}
@@ -21,6 +22,7 @@ def login():
     global access_token
     access_token = r.json()["token"]
     logging.info(access_token)
+
 
 def root_folder():
     r = requests.get(root_folder_url, headers={"x-token": access_token}, params=root_folder_params)     
@@ -45,6 +47,7 @@ def file_analyses():
 def file_artifacts():                                                                         
     r = requests.get(get_artifacts_url, headers={"x-token": access_token}) 
     logging.info(r.json())
+
 
 if __name__ == "__main__":
     login()
