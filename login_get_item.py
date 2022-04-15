@@ -1,4 +1,7 @@
 import requests
+import logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(levelname)s: %(message)s")
+
 
 
 base_url = "https://reqres.in/"
@@ -8,15 +11,20 @@ payload = {"email": "eve.holt@reqres.in", "password": "cityslicka"}
 
 
 #Logging in to get a token
-r = requests.post(login_url, data=payload)
-print(r.text)
-r.json = r.json()
-token = r.json["token"]
+def login():
+    r = requests.post(login_url, data=payload)
+    logging.info(r.text)
+    global token
+    token = r.json()["token"]
 
 
 #Getting an item
-r = requests.get(get_item_url, headers={"Autorization": token})
-print(r.text)
+def get_item():
+    r = requests.get(get_item_url, headers={"Autorization": token})
+    logging.info(r.text)
 
 
+if __name__ == "__main__":
+    login()
+    get_item()
 
