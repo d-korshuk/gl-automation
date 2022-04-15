@@ -12,7 +12,7 @@ headers = {
 
 def get_request():
         r = requests.get(base_url, headers=headers, params=payload)
-        logging.info(r.content)
+        logging.info(r.json())
 
 
 if __name__ == "__main__":
