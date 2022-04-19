@@ -3,13 +3,6 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(levelname)s: %(message)s")
 
 
-
-
-#REMOVE GLOBAL AND ADD TOKEN AS PARAMETER
-
-#git commit "chnaged url names"
-
-
 login_url = "https://app.cosmosid.com/api/v1/login"
 login_payload = {"expiry": 86400, "login_from": "login page"}
 login_headers = {"Authorization": "Basic bWFpbGludGVzdEB1a3IubmV0Om1haWxpbnRlc3RAdWtyLm5ldA=="}
@@ -28,6 +21,7 @@ def login():
     global access_token
     access_token = r.json()["token"]
     return access_token
+
 
 def root_folder():
     access_token = login()
