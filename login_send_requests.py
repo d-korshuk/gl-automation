@@ -18,43 +18,37 @@ count_params = {"folder_id": "84c966d5-8dce-429d-8f92-44d5e28b1581"}
 
 def login():
     r = requests.post(login_url, json=login_payload, headers=login_headers) 
-    global access_token
     access_token = r.json()["token"]
     return access_token
 
 
 def root_folder():
-    access_token = login()
     r = requests.get(root_folder_url, headers={"x-token": access_token}, params=root_folder_params)     
     logging.info(r.json())
 
 
 def files_count():
-    access_token = login()
     r = requests.get(files_count_url, headers={"x-token": access_token}, params=root_folder_params)       
     logging.info(r.raise_for_status)
 
 
 def file_runs():
-    access_token = login()
     r = requests.get(runs_url, headers={"x-token": access_token})
     logging.info(r.raise_for_status)
                                                                                                        
 
 def file_analyses():
-    access_token = login()
     r = requests.get(analyses_url, headers={"x-token": access_token})     
     logging.info(r.raise_for_status)
                                                                                                  
 
 def file_artifacts():  
-    access_token = login()                                                                       
     r = requests.get(artifacts_url, headers={"x-token": access_token}) 
     logging.info(r.raise_for_status)
 
 
 if __name__ == "__main__":
-    login()
+    access_token = login()
     root_folder()
     files_count()
     file_runs()
