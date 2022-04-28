@@ -1,0 +1,2 @@
+Python version 3.10.4
+Pytest version 7.1.1
